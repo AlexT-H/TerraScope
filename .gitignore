@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+
+# Node
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Heavy GIS data and generated pipeline outputs
+data/raw/
+data/interim/
+data/processed/
+outputs/
+
+# Large raster/source formats
+*.tif
+*.tiff
+*.img
+*.jp2
+*.vrt
+*.aux.xml
+*.ovr
+*.zip
+*.7z
+*.tar
+*.gz
+
+# QGIS temp/backup
+*.qgz~
+*.qgs~
+*.lock
+*.tmp
+*.bak
+
+# Do not deploy old GeoJSON parcel map
+frontend/public/data/scored_parcels_map.geojson
+
+# Keep frontend runtime data
+!frontend/public/data/
+!frontend/public/data/terrascope_parcels.pmtiles
+!frontend/public/data/parcel_index.json
+!frontend/public/data/city_reference_points.geojson
+!frontend/public/data/profile_config.json
+
+# Keep backend runtime data
+!backend/data/
+!backend/data/scored_metrics.csv

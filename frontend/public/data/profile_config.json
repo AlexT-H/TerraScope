@@ -1,0 +1,60 @@
+{
+  "defaultProfile":"residential_homestead",
+  "profiles":[
+    {
+      "key":"residential_homestead",
+      "label":"Residential \/ Homestead",
+      "scoreField":"residential_homestead_score",
+      "classField":"residential_homestead_class",
+      "weights":{
+        "slope_score":0.3,
+        "access_score":0.2,
+        "proximity_score":0.15,
+        "risk_score":0.25,
+        "vegetation_score":0.05,
+        "acreage_score":0.05
+      }
+    },
+    {
+      "key":"agriculture_open_land",
+      "label":"Agriculture \/ Open Land",
+      "scoreField":"agriculture_open_land_score",
+      "classField":"agriculture_open_land_class",
+      "weights":{
+        "slope_score":0.25,
+        "vegetation_score":0.25,
+        "acreage_score":0.2,
+        "access_score":0.15,
+        "risk_score":0.15
+      }
+    },
+    {
+      "key":"event_venue_rural_tourism",
+      "label":"Event Venue \/ Rural Tourism",
+      "scoreField":"event_venue_rural_tourism_score",
+      "classField":"event_venue_rural_tourism_class",
+      "weights":{
+        "access_score":0.25,
+        "proximity_score":0.2,
+        "terrain_variety_score":0.2,
+        "risk_score":0.2,
+        "acreage_score":0.1,
+        "vegetation_score":0.05
+      }
+    },
+    {
+      "key":"conservation_habitat",
+      "label":"Conservation \/ Habitat",
+      "scoreField":"conservation_habitat_score",
+      "classField":"conservation_habitat_class",
+      "weights":{
+        "vegetation_score":0.25,
+        "water_habitat_score":0.25,
+        "wetland_habitat_score":0.15,
+        "acreage_score":0.15,
+        "low_access_score":0.1,
+        "terrain_variety_score":0.1
+      }
+    }
+  ]
+}
