@@ -12,6 +12,13 @@ from schemas import ScoreRequest, RankRequest
 BASE_DIR = Path(__file__).resolve().parent
 DATA_PATH = BASE_DIR / "data" / "scored_metrics.csv"
 
+def load_data():
+    if not DATA_PATH.exists():
+        raise FileNotFoundError(f"Could not find scored metrics CSV at: {DATA_PATH}")
+    return pd.read_csv(DATA_PATH)
+
+parcels_df = load_data()
+
 app = FastAPI(
     title="TerraScope API",
     description="Small API for TerraScope parcel suitability scoring and ranking.",
@@ -33,13 +40,13 @@ app.add_middleware(
 
 
 def load_parcels() -> list[dict[str, Any]]:
-    if not DATA_PATH.exists():
+    if not parcels_df.exists():
         raise FileNotFoundError(
             f"Missing backend data file: {DATA_PATH}. "
             "Copy data/processed/scored_metrics.csv to backend/data/scored_metrics.csv"
         )
 
-    df = pd.read_csv(DATA_PATH)
+    df = pd.read_csv(parcels_df)
     df = df.where(pd.notnull(df), None)
     return df.to_dict(orient="records")
 
@@ -161,6 +168,22 @@ def rank(request: RankRequest) -> dict[str, Any]:
         "results": filtered[: request.limit],
     }
 
+@app.get("/")
+def root():
+    return {
+        "name": "TerraScope API",
+        "status": "running",
+        "docs": "/docs"
+    }
+
+
+@app.get("/health")
+def health():
+    return {
+        "status": "ok",
+        "data_file_exists": DATA_PATH.exists(),
+        "data_file": str(DATA_PATH)
+    }
 
 @app.post("/parcels/{unit_id}/score")
 def score_single_parcel(unit_id: str, request: ScoreRequest) -> dict[str, Any]:
