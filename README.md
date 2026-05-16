@@ -4,7 +4,8 @@ TerraScope is an interactive rural land suitability screening web application. T
 
 The project demonstrates a full geospatial application workflow: data acquisition, spatial preprocessing, raster/vector metric generation, suitability scoring, vector-tile web optimization, backend API development, and interactive web mapping.
 
-> TerraScope is an exploratory geospatial decision-support tool. It compares rural land suitability scenarios using public spatial data and transparent assumptions. It should not replace professional site assessment, legal review, environmental review, engineering review, surveying, permitting, zoning review, or local planning guidance.
+**Live Deployment Link: https://terrascope-gis.vercel.app/**
+
 
 ---
 
